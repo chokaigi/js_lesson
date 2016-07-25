@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="css/common.css" type="text/css" />
+<link rel="stylesheet" href="css/kiwami_layout.css" type="text/css" />
+<link rel="stylesheet" href="css/kiwami_lesson.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/kiwami.js"></script>
+<script type="text/javascript">
+/*===　javascript 極み　ここにコードを記述　===*/
+</script>
+<title>javascript編</title>
+</head>
+<body>
+<div id="top">
+   <div id="header">
+	  <img border="0" src="images/logo.jpg" width="200" height="45" alt="logo">
+	  <div id="pr">
+		 <p></p>
+	  </div>
+	</div>
+	<div id="contents">
+		<div id="menu"></div>
+		<div id="main">
+			<h3 id="title"></h3>
+			<p>
+				セレクタは、任意のエレメントを、DOM ツリーから選び出すための書式です。<br />
+			</p>
+			<form id="form" name="form" action="*" method="post">
+				<h4>フォーム</h4>
+				<ul>
+					<li>
+						<label size="20" for="name">名前：</label>
+						<input type="text" id="name" name="name"value="添付　三朗" size="20">
+					</li>
+					<li>
+						<label for="mail">メールアドレス：</label>
+						<input type="text" id="mail" name="mail" value="saburo.temp@example.com" size="40">
+					</li>
+					<li>
+						<label for="tel">電話番号：</label>
+						<input type="text" id="tel" name="tel" value="09077779999" size="15">
+					</li>
+					</li>
+						<input type="submit" value="登録">
+					<li>
+				</ul>
+				<h4>テーブル</h4>
+				<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>名前</th>
+						<th>メールアドレス</th>
+						<th>電話番号</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>テンプ 太郎</td>
+						<td>taro.temp@example.com</td>
+						<td>09011113333</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>テンプ 次郎</td>
+						<td>jiro.temp@example.com</td>
+						<td>09033335555</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>テンプ 花子</td>
+						<td>hanako.temp@example.com</td>
+						<td>09055557777</td>
+					</tr>
+				</tbody>
+				</table>
+			</form>
+		</div>
+		<div id="sub">
+			<div class="section">
+				<h3>練習１</h3>
+				電話番号をセレクタで取得して下さい。
+				<textarea id="practice1" rows="4" cols="84" >$("#tel").val();</textarea>
+				<br>
+				<div>
+					<input type="button" onClick="practice_build('practice1');" value="スクリプト実行">
+				</div>
+				<div id="practice1_result" size="120px">
+					実行結果を表示
+				</div>
+			</div>
+			<div class="section">
+				<h3>練習２</h3>
+			</div>
+		</div>  
+		<div id="pageTop">
+			<a href="#">ページのトップへ戻る</a>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="copyright">Copyright &copy; 2016 開発サービス課 All Rights Reserved.</div>
+	</div>
+</div>
+</body>
+</html>
