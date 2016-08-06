@@ -10,16 +10,16 @@ $(function() {
 		{ file: "lesson3.html", menu: "第３章：業務で大活躍のAjaxアクセス" },
 	]
 	createSection("section1", "第１回目", ary1);
-	$("#section1_sub").append('<a href="questionnaire1.html">第１回目勉強会アンケート</a>');
+	$("#section1_sub").append('第１回目勉強会アンケート');
 	
 	
 	var ary2 = [
 		{ file: "lesson4.html", menu: "第４章：jQueryを使ったイベントハンドラ" },
 		{ file: "lesson5.html", menu: "第５章：関数（無名関数、クロージャー、プロトタイプ、クラスの作成）" },
-		{ file: "lesson5.html", menu: "第６章：WindowオブジェクトとDocumentオブジェクト" },
+		{ file: "lesson6.html", menu: "第６章：WindowオブジェクトとDocumentオブジェクト" },
 	]
 	createSection("section2", "第２回目", ary2);
-	$("#section2_sub").append('<a href="questionnaire1.html">第２回目勉強会アンケート</a>');
+	$("#section2_sub").append('第２回目勉強会アンケート');
 	var ary3 = [
 		{ file: "", menu: "勉強会全体を通しての質問時間" },
 	]
@@ -33,11 +33,9 @@ $(function() {
 		{ file: "lesson1.html", menu: "DOM（Document Object Model）を学ぶ" },
 		{ file: "lesson2.html", menu: "jQueryとDOMを使用した高度なセレクタ" },
 		{ file: "lesson3.html", menu: "業務で大活躍のAjaxアクセス" },
-		{ file: "questionnaire1.html", menu: "第１回目勉強会アンケート" },
 		{ file: "lesson4.html", menu: "jQueryを使ったイベントハンドラ" },
 		{ file: "lesson5.html", menu: "関数（無名関数、クロージャー、プロトタイプ、クラスの作成）" },
 		{ file: "lesson6.html", menu: "WindowオブジェクトとDocumentオブジェクト" },
-		{ file: "questionnaire2.html", menu: "第２回目勉強会アンケート" },
 	]
 	
 	
