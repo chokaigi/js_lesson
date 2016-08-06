@@ -5,8 +5,12 @@
 #top {
    width:1260px;
 }
+#menu li {
+    height:3.5em;
+}
 #menu li a {
-   width:156px;
+   height:3.5em;
+   width:139px;
 }
 #main {
    width:610px;
