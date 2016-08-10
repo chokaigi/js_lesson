@@ -29,16 +29,64 @@
 		<div id="menu"></div>
 		<div id="main">
 			<h3 id="title"></h3>
-			<p>
-				説明を記述<br/>
-			</p>
+            <h4>主なイベントタイプ</h4>
+            <table class="table" style="margin-bottom:5px;">
+            <thead>
+                <tr>
+                    <th>イベントタイプ</th>
+                    <th>該当するタイミング</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>click</th>
+                    <td>要素がクリックされたとき</td>
+                </tr>
+                <tr>
+                    <th>keydowm</th>
+                    <td>要素にフォーカスした状態で、キーボードのキーが押されたとき</td>
+                </tr>
+                <tr>
+                    <th>keyup</th>
+                    <td>要素にフォーカスした状態で、キーボードのキーが離されたとき</td>
+                </tr>
+                <tr>
+                    <th>focus</th>
+                    <td>要素にフォーカスが当たったとき</td>
+                </tr>
+                <tr>
+                    <th>blur</th>
+                    <td>要素からフォーカスが離れたとき</td>
+                </tr>
+                <tr>
+                    <th>resize</th>
+                    <td>要素がリサイズされたとき</td>
+                </tr>
+                <tr>
+                    <th>scroll</th>
+                    <td>要素がスクロールされたとき</td>
+                </tr>
+            </tbody>
+            </table>
+            <h4>on構文</h4>
+<pre>
+$(セレクタ).on(イベント名, function(){
+  // イベントが発生した時に実行する処理
+});
+</pre>
 		</div>
 		<div id="sub">
 			<div class="section">
 				<h3>練習１</h3>
-			</div>
-			<div class="section">
-				<h3>練習２</h3>
+                <div style="width:100%;height:50px;background-color:red;margin:5px 0;" id="area"></div>
+赤色のエリアをクリックしたら別の色に変わるようにしてください
+<textarea id="practice4-1" rows="4" cols="84" >
+$("#area").on("", function(){
+});
+</textarea>
+				<div>
+					<input type="button" onClick="practice_build('practice4-1');" value="スクリプト読み込み">
+				</div>
 			</div>
 		</div>  
 		<div id="pageTop">
