@@ -30,15 +30,113 @@
 		<div id="main">
 			<h3 id="title"></h3>
 			<p>
-				説明を記述<br/>
+				Ajaxはウェブブラウザ内で非同期通信を行いインターフェイスの構築を行うプログラミング手法です。<br/>
 			</p>
+			<p>
+				<h2>jQuery.ajax(options)のオプション</h2>
+				<div id="ex1">
+					<table class="table" id="table_1">
+						<thead>
+							<tr>
+								<th>キー</th>
+								<th>型</th>
+								<th>説明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>type</td>
+								<td>String</td>
+								<td>初期値："GET"　"POST" もしくは "GET" を指定</td>
+							</tr>
+							<tr>
+								<td>url</td>
+								<td>String</td>
+								<td>リクエスト先のURLを指定</td>
+							</tr>
+							<tr>
+								<td>async</td>
+								<td>Boolean</td>
+								<td>初期値：true　デフォルトでは、全てのリクエストは非同期</td>
+							</tr>
+							<tr>
+								<td>dataType</td>
+								<td>String</td>
+								<td>期待するサーバの応答データの形式を指定</br>
+								xml：XMLドキュメント</br>
+								html：HTMLテキスト</br>
+								script：データをJavaScriptとして評価</br>
+								json：JSONオブジェクト</br>
+								text：プレーンテキスト</br>
+								</td>
+							</tr>
+							<tr>
+								<td>data</td>
+								<td>String</td>
+								<td>サーバに送信するデータを指定</td>
+							</tr>
+							<tr>
+								<td>context</td>
+								<td>Object</td>
+								<td>コールバック関数の context(this) を指定</td>
+							</tr>
+							<tr>
+								<td>success</td>
+								<td>Function</td>
+								<td>通信が成功したときに実行するコールバック関数を指定</td>
+							</tr>
+							<tr>
+								<td>error</td>
+								<td>Function</td>
+								<td>通信が失敗したときに実行するコールバック関数を指定</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</p>
+			<div style="font-size:80%">
+				<h5>記述例</h5>
+				<script type="text/javascript" language="javascript">
+				var fn = function() {
+					$.ajax({
+						type: 'POST',
+						url: 'http://www.yahoo.co.jp',
+						async: true,
+						dataType: 'html',
+						data: {
+							'param1': '1',
+							'param1': '2'
+						},
+						success: function(result){
+							alert(result);
+						}
+					});
+				}
+				document.write(html_replace(String(fn)));
+				</script>
+			</div>
 		</div>
 		<div id="sub">
 			<div class="section">
 				<h3>練習１</h3>
+				記述例を参考にURL部分を置き換えてアクセス</br>
+				<textarea id="practice1" rows="20" cols="84" >
+				</textarea>
+				<br>
+				<div>
+					<input type="button" onClick="practice_build('practice1');" value="スクリプト実行">
+				</div>
 			</div>
 			<div class="section">
 				<h3>練習２</h3>
+				駅データで実際にアクセスをして都道府県情報をAPIで取得</br>
+				<a href="http://www.ekidata.jp/api/api_pref.php">駅データ : jp http://www.ekidata.jp/api/api_pref.php</a>
+				<textarea id="practice2" rows="20" cols="84" >
+				</textarea>
+				<br>
+				<div>
+					<input type="button" onClick="practice_build('practice2');" value="スクリプト実行">
+				</div>
 			</div>
 		</div>  
 		<div id="pageTop">

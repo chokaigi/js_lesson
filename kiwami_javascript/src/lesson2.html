@@ -32,73 +32,273 @@
 			<p>
 				セレクタは、任意のエレメントを、DOM ツリーから選び出すための書式です。<br />
 			</p>
+			<p>
+				<h2>基本のセレクター</h2>
+				<div id="ex1">
+					<table class="table" id="table_1">
+						<thead>
+							<tr id="tr_0">
+								<th id="td_0A">セレクター</th>
+								<th id="td_0B">説明</th>
+								<th id="td_0C">記述例</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="tr_1">
+								<td id="td_1A" class="abc">.class</td>
+								<td id="td_1B">クラス名を持つ全ての要素を取得</td>
+								<td id="td_1C">$(".abc")</td>
+							</tr>
+							<tr id="tr_2">
+								<td id="td_2A"><span>element</span></td>
+								<td id="td_2B">要素名を持つ全ての要素を取得</td>
+								<td id="td_1C">$("span")</td>
+							</tr>
+							<tr id="tr_3">
+								<td id="td_3A" efg="111">#id</td>
+								<td id="td_3B">idを持つ唯一の要素を取得</td>
+								<td id="td_1C">$("#td_3A")</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="ex_r1">
+					<h5>基本セレクターを記述</h5>
+					<textarea id="example1" rows="1" cols="84" >$("").text();</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example1');" value="スクリプト実行">
+					</div>
+					<div id="example1_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>
+			</p>
+			<p>
+				<h2>属性(attribute)のセレクター</h2>
+				<div id="ex2">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>セレクター</th>
+								<th>説明</th>
+								<th>記述例</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>[attribute]</td>
+								<td>指定されたattributeを持つ要素</td>
+								<td>$("[efg]")</td>
+							</tr>
+							<tr>
+								<td>[attribute='value']</td>
+								<td>attributeの値がvalueと一致する要素</td>
+								<td>$("[id=td_1A]")</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="ex_r2">
+					<h5>属性セレクターを記述</h5>
+					<textarea id="example2" rows="1" cols="84" >$("").text();</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example2');" value="スクリプト実行">
+					</div>
+					<div id="example2_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>
+			</p>
+			<p>
+				<h5>※POINT:クラス名または属性は実際になくともセレクターができる。</h5>
+				<br />
+			</p>
+			<p>
+				<h2>ツリー構造のセレクター</h2>
+				<div id="ex3">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>セレクター</th>
+								<th>説明</th>
+								<th >記述例</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>parent > child</td>
+								<td>親要素の全ての子要素</td>
+								<td>$("table > td")</td>
+							</tr>
+							<tr>
+								<td>prev / next</td>
+								<td>兄要素に後続する直接の弟要素</td>
+								<td>$("#td_0B").prev() / $("#td_0B").next()</td>
+							</tr>
+							<tr>
+								<td>siblings</td>
+								<td>自分を含まない兄弟要素</td>
+								<td>$("#td_0A").siblings()</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="ex_r3">
+					<h5>ツリー構造セレクターを記述</h5>
+					<textarea id="example3" rows="1" cols="84" >$("").text();</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example3');" value="スクリプト実行">
+					</div>
+					<div id="example3_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>
+			</p>
+			<p>
+				<h2>$.each()メソッドによるループ処理の使い分け</h2>
+				$.each()メソッドには２種類の記述の仕方があります。<br />
+				<h6>セレクタで取得した要素をループ処理する場合</h6>
+				$('.element').each(function(index, item) {<br />
+				<br />
+				});<br />
+				<div id="ex_r4">
+					<h5>alert(index + ":" + item.id);を記述して例題 HTMLから<br />テーブルレコード(tr)の取得を確認</h5>
+					<textarea id="example4" rows="5" cols="84" ></textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example4');" value="スクリプト実行">
+					</div>
+				</div>
+				<br />
+				<h6>配列またはオブジェクトを処理する場合</h6>
+				$.each(data, function(index, item) {<br />
+				<br />
+				});<br />
+				<div id="ex_r5">
+					<h5>alert(index + ":" + item);を記述してdataの中身を確認</h5>
+					<textarea id="example5" rows="5" cols="84" >var data = ['キリン','ライオン','ゾウ','カバ'];</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example5');" value="スクリプト実行">
+					</div>
+				</div>
+			</p>
+			<p>
+				<h5>※引数のindexは0から始まる番号、itemはその要素または値です。</h5>
+				<br />
+			</p>
 			<form id="form" name="form" action="*" method="post">
-				<h4>フォーム</h4>
-				<ul>
-					<li>
-						<label size="20" for="name">名前：</label>
-						<input type="text" id="name" name="name"value="添付　三朗" size="20">
-					</li>
-					<li>
-						<label for="mail">メールアドレス：</label>
-						<input type="text" id="mail" name="mail" value="saburo.temp@example.com" size="40">
-					</li>
-					<li>
-						<label for="tel">電話番号：</label>
-						<input type="text" id="tel" name="tel" value="09077779999" size="15">
-					</li>
-					</li>
-						<input type="submit" value="登録">
-					<li>
-				</ul>
-				<h4>テーブル</h4>
-				<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>名前</th>
-						<th>メールアドレス</th>
-						<th>電話番号</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>テンプ 太郎</td>
-						<td>taro.temp@example.com</td>
-						<td>09011113333</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>テンプ 次郎</td>
-						<td>jiro.temp@example.com</td>
-						<td>09033335555</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>テンプ 花子</td>
-						<td>hanako.temp@example.com</td>
-						<td>09055557777</td>
-					</tr>
-				</tbody>
-				</table>
+				<div id="qa1">
+					<h4>練習１</h4>
+					<ul>
+						<li>
+							<label size="20" for="name">名前：</label>
+							<input type="text" id="name" name="name"value="添付　三朗" size="20">
+						</li>
+						<li>
+							<label for="mail">メールアドレス：</label>
+							<input type="text" id="mail" name="mail" value="saburo.temp@example.com" size="40">
+						</li>
+						<li>
+							<label for="tel">電話番号：</label>
+							<input type="text" id="tel" name="tel" value="09077779999" size="15">
+						</li>
+					</ul>
+					<h5>メールのidを起点にラベル名を取得して下さい。</h5>
+					<textarea id="practice1" rows="3" cols="84" ></textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('practice1');" value="スクリプト実行">
+					</div>
+					<div id="practice1_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>
+				<div id="qa2">
+					<h4>練習２</h4>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>選択</th>
+								<th>名前</th>
+								<th>メールアドレス</th>
+								<th>電話番号</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td><input type="checkbox"></td>
+								<td>テンプ 太郎</td>
+								<td>taro.temp@example.com</td>
+								<td>09011113333</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td><input type="checkbox"></td>
+								<td>テンプ 次郎</td>
+								<td>jiro.temp@example.com</td>
+								<td>09033335555</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td><input type="checkbox"></td>
+								<td>テンプ 花子</td>
+								<td>hanako.temp@example.com</td>
+								<td>09055557777</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><input type="checkbox"></td>
+								<td>テンプ 花美</td>
+								<td>hanami.temp@example.com</td>
+								<td>09077779999</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><input type="checkbox"></td>
+								<td>テンプ 三郎</td>
+								<td>saburo.temp@example.com</td>
+								<td>09099990000</td>
+							</tr>
+						</tbody>
+					</table>
+					<h5>全てのレコードのチェックを選択して下さい。</h5>
+					<textarea id="practice2" rows="3" cols="84" ></textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('practice2');" value="スクリプト実行">
+					</div>
+					</br>
+				</div>
 			</form>
 		</div>
 		<div id="sub">
-			<div class="section">
-				<h3>練習１</h3>
-				電話番号をセレクタで取得して下さい。
-				<textarea id="practice1" rows="4" cols="84" >$("#tel").val();</textarea>
-				<br>
-				<div>
-					<input type="button" onClick="practice_build('practice1');" value="スクリプト実行">
-				</div>
-				<div id="practice1_result" size="120px">
-					実行結果を表示
-				</div>
+			<div class="section" style="font-size:80%">
+				<h3>例題 HTML</h3>
+				<script type="text/javascript" language="javascript">
+					document.write(html_replace($("#ex1").html()));
+				</script>
 			</div>
-			<div class="section">
-				<h3>練習２</h3>
+			<div class="section" style="font-size:80%">
+				<h3>練習１ HTML</h3>
+				<script type="text/javascript" language="javascript">
+					document.write(html_replace($("#qa1").html()));
+				</script>
+			</div>
+			<div class="section" style="font-size:80%">
+				<h3>練習２ HTML</h3>
+				<script type="text/javascript" language="javascript">
+					document.write(html_replace($("#qa2").html()));
+				</script>
 			</div>
 		</div>  
 		<div id="pageTop">

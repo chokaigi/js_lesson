@@ -77,6 +77,7 @@ function createSection(elmentId, elmentText, ary) {
 /* ====練習問題実行======*/
 function practice_build(elmId) {
 	var str = $("#" + elmId).val();
+alert(str)
 	var resultSec = "#" + elmId + "_result";
 	try {
 		$(resultSec).text(eval(str));
@@ -84,6 +85,11 @@ function practice_build(elmId) {
 	} catch(e) {
 		alert(e);
 	}
+}
+
+/* ====HTMLを文字列で表示======*/
+function html_replace(str) {
+	return str.replace(/</g,"&lt;").replace(/\n/g,"<br>").replace(/\t/g,"&nbsp;").replace(/"/g,"&quot;");
 }
 
 
