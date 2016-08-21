@@ -30,24 +30,144 @@
 		<div id="main">
 			<h3 id="title"></h3>
 			<p>
-				JavaScriptはHTMLをドキュメントオブジェクトというオブジェクトとして扱っています。<br />
-				オブジェクトはHTMLのような階層構造を扱うのにも、とても便利なのです。
+				DOMとはHTML や XML で記述された各要素を取り扱うための標準インタフェースとして<br />
+				1998年に W3C によって勧告されました。<br />
+				JavaScriptはHTMLをドキュメントオブジェクトというオブジェクトとして扱います。<br />
 			</p>
 			<h4>HTMLの構造を理解してみよう</h4>
-			<img border="0" src="images/dom_1.jpg" width="400" height="350" alt="dom_1">
+			<p>
+				解説１をみてください。<br />
+				HTMLを１番上の階層として２番目の階層にHEADとBODYがいます。<br />
+				更に３番目の階層にTITLEとDIVが存在したツリー構造になっていることが<br />
+				わかります。<br />
+			</p>
+			<img border="0" src="images/dom_1.png" width="450" height="350" alt="dom_1">
+			<br />
+			<br />
 			<h4>DOMはJavaScriptからHTMLを使う仕組み</h4>
-			<img border="0" src="images/dom_2.jpg" width="400" height="350" alt="dom_2">
+			<h2>要素を参照する方法</h2>
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>説明</th>
+							<th>記述例</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>id 属性で指定した名前で要素を参照</td>
+							<td>document.getElementById(id)</td>
+						</tr>
+						<tr>
+							<td>タグ名から要素リストを参照</td>
+							<td>element.getElementsByTagName(tagName)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+			<h2>要素で家族階層を参照する方法</h2>
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>説明</th>
+							<th>記述例</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>子要素リストを参照</td>
+							<td>element.childNodes</td>
+						</tr>
+						<tr>
+							<td>親要素を参照</td>
+							<td>element.parentNode</td>
+						</tr>
+						<tr>
+							<td>長子要素を参照</td>
+							<td>element.firstChild</td>
+						</tr>
+						<tr>
+							<td>末子要素</td>
+							<td>element.lastChild</td>
+						</tr>
+						<tr>
+							<td>兄姉要素を参照</td>
+							<td>element.previousSibling</td>
+						</tr>
+						<tr>
+							<td>弟妹要素を参照</td>
+							<td>element.nextSibling</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
 		</div>
 		<div id="sub">
-			<div class="section">
+			<div class="section" style="font-size:80%">
 				<h3>解説１</h3>
-				htmlという箱の中に、headとbodyという箱が入っていて、headという箱の中にはtitleという箱があり、
-				bodyという箱の中にはdivという箱が2つ入っています。そして、
-				それぞれの要素が「入れ子」になっている構造といえます。				
-				
+				<div id="ex1" style="display:none">
+					&lt;html&gt;
+						&lt;head&gt;
+							&lt;title&gt;JavaScript極み&lt;/title&gt;
+						&lt;/head&gt;
+						&lt;body&gt;
+							&lt;div&gt;lesson1&lt;/div&gt;
+							&lt;div&gt;lesson2&lt;/div&gt;
+						&lt;/body&gt;
+					&lt;/html&gt;
+				</div>
+				<script type="text/javascript" language="javascript">
+					document.write(html_replace($("#ex1").html()));
+				</script>
 			</div>
 			<div class="section">
 				<h3>解説２</h3>
+				<div id="ex2">
+					<table border="2" id="table_1">
+						<thead>
+							<tr id="tr_0">
+								<th id="td_0A">動物</th>
+								<th id="td_0B">フルーツ</th>
+								<th id="td_0C">野菜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="tr_1">
+								<td id="td_1A">ライオン</td>
+								<td id="td_1B">りんご</td>
+								<td id="td_1C">キャベツ</td>
+							</tr>
+							<tr id="tr_2">
+								<td id="td_2A">ゾウ</td>
+								<td id="td_2B">ぶどう</td>
+								<td id="td_1C">にんじん</td>
+							</tr>
+							<tr id="tr_3">
+								<td id="td_3A">ゴリラ</td>
+								<td id="td_3B">みかん</td>
+								<td id="td_1C">レタス</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<script type="text/javascript" language="javascript">
+					document.write(html_replace($("#ex2").html()));
+				</script>
+				<div id="ex_r1">
+					<h5>実際に取得してみよう</h5>
+					<textarea id="example1" rows="1" cols="84" >document.getElementById("td_0A").innerText;</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example1');" value="スクリプト実行">
+					</div>
+					<div id="example1_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>				
+				
 			</div>
 		</div>  
 		<div id="pageTop">
