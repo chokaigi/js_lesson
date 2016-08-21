@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/kiwami.js"></script>
+<script type="text/javascript" src="js/kiwami_lesson3.js"></script>
 <script type="text/javascript">
 /*===　javascript 極み　ここにコードを記述　===*/
 </script>
@@ -108,34 +109,68 @@
 							'param1': '2'
 						},
 						success: function(result){
-							alert(result);
+							$("#example1_response").text(result).css('background-color', 'cyan');
+						},
+						error: function(result){
+							$("#example1_response").text(result).css('background-color', 'red');
 						}
 					});
 				}
-				document.write(html_replace(String(fn)));
+				document.write(html_replace(function_replace(fn)));
 				</script>
+			</div>
+			<div id="ex_r3">
+				<h5>記述例を参考にURL部分を置き換えて実行してください。</h5>
+				<textarea id="example1" rows="18" cols="84" ></textarea>
+				<br>
+				<div>
+					<input type="button" onClick="response_build('example1');" value="スクリプト実行">
+				</div>
+				<div id="example1_response" class="response">
+					実行結果を表示
+				</div>
+				</br>
 			</div>
 		</div>
 		<div id="sub">
 			<div class="section">
 				<h3>練習１</h3>
-				記述例を参考にURL部分を置き換えてアクセス</br>
-				<textarea id="practice1" rows="20" cols="84" >
-				</textarea>
+				<a href="http://www.ekidata.jp/api/api_pref.php">駅データJP</a>のAPIで実際に東京にある路線を取得してください。</br>
+				条件：</br>
+				url : http://www.ekidata.jp/api/p/13.xml</br>
+				type: 'GET'</br>
+				dataType: 'text'</br>
+				実行結果id : practice1_response</br>
+				<textarea id="practice1" rows="18" cols="84" ></textarea>
 				<br>
 				<div>
-					<input type="button" onClick="practice_build('practice1');" value="スクリプト実行">
+					<input type="button" onClick="response_build('practice1');" value="スクリプト実行">
+				</div>
+				<div id="practice1_response" class="response">
+					実行結果を表示
 				</div>
 			</div>
 			<div class="section">
 				<h3>練習２</h3>
-				駅データで実際にアクセスをして都道府県情報をAPIで取得</br>
-				<a href="http://www.ekidata.jp/api/api_pref.php">駅データ : jp http://www.ekidata.jp/api/api_pref.php</a>
-				<textarea id="practice2" rows="20" cols="84" >
-				</textarea>
+				東京にある路線をスクリプトで取得してプルダウン表示して下さい</br>
+				条件：</br>
+				url : http://www.ekidata.jp/api/p/13.json</br>
+				type: 'GET'</br>
+				dataType: 'script'</br>
+				プルダウンid : practice2_select</br>
+				プルダウン形式 : &lt;option value="路線CD"&gt;路線名&lt;/option&gt;</br>
+				<textarea id="practice2" rows="24" cols="84" ></textarea>
 				<br>
 				<div>
-					<input type="button" onClick="practice_build('practice2');" value="スクリプト実行">
+					<input type="button" onClick="response_build('practice2');" value="スクリプト実行">
+					<input type="button" onClick="answer_build('practice2_select');" value="回答結果を実行">
+					<input type="button" onClick="answer_reset('practice2_select');" value="実行結果をリセット">
+				</div>
+				<div id="practice2_response">
+					実行結果を表示：
+					<select id="practice2_select">
+						<option value="">選択してください</option>
+					</select>
 				</div>
 			</div>
 		</div>  
