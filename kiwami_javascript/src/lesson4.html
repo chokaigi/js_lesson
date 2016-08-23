@@ -29,7 +29,7 @@
 		<div id="menu"></div>
 		<div id="main">
 			<h3 id="title"></h3>
-            <h4>主なイベントタイプ</h4>
+            <h2>主なイベントタイプ</h2>
             <table class="table" style="margin-bottom:5px;">
             <thead>
                 <tr>
@@ -68,22 +68,106 @@
                 </tr>
             </tbody>
             </table>
+
             <h4>on構文</h4>
-<pre>
-$(セレクタ).on(イベント名, function(){
-  // イベントが発生した時に実行する処理
-});
-</pre>
+			<div style="margin-bottom:15px;">
+            <script>
+                var fn = function() {
+                    $(セレクタ).on(イベントタイプ, function(){
+                        // イベントが発生した時に実行する処理
+                    });
+                }
+                document.write(html_replace(function_replace(fn)));
+            </script>
+            </div>
+
+            <h4>よく使うjQuery関数</h4>
+            <table class="table" style="margin-bottom:5px;">
+            <thead>
+                <tr>
+                    <th>関数名</th>
+                    <th>機能</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>css({name:value})</th>
+                    <td>スタイルを変更する</td>
+                </tr>
+                <tr>
+                    <th>show(speed, [callback])</th>
+                    <td>要素を表示する</td>
+                </tr>
+                <tr>
+                    <th>hide(speed, [callback])</th>
+                    <td>要素を非表示にする</td>
+                <tr>
+                    <th>toggle()</th>
+                    <td>要素の表示/非表示を切り替える</td>
+                </tr>
+                <tr>
+                    <th>fadeIn(speed, [callback])</th>
+                    <td>要素をフェードインする</td>
+                </tr>
+                <tr>
+                    <th>fadeOut(speed, [callback])</th>
+                    <td>要素をフェードアウトする</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <h2>イベントバブリング</h2>
+            イベントが子要素から親要素に伝播すること
+            <div style="margin:10px 0px;">
+            <div id="outer1" style="height:150px;width:150px;background-color:#ff4500;">
+                <div id="inner1" style="height:100px;width:100px;background-color:#d7ad10;margin:25px;position:absolute;">
+                </div>
+            </div>
+            </div>
+            <script>
+                $("#inner1").on("click", function(event){
+                    alert("内側");
+                });
+                $("#outer1").on("click", function(event){
+                    alert("外側");
+                });
+            </script>
+            <h4>stopPropagation()でイベントの伝播を止める</h4>
+            <script>
+                var fn = function() {
+                    $("#inner2").on("click", function(event){
+                        event.stopPropagation();
+                        alert("内側");
+                    });
+                    $("#outer2").on("click", function(event){
+                        alert("外側");
+                    });
+                }
+                document.write(html_replace(function_replace(fn)));
+            </script>
+            <div id="outer2" style="height:150px;width:150px;background-color:#ff4500;">
+                <div id="inner2" style="height:100px;width:100px;background-color:#d7ad10;margin:25px;position:absolute;">
+                </div>
+            </div>
+            <script>
+                $("#inner2").on("click", function(event){
+                    event.stopPropagation();
+                    alert("内側");
+                });
+                $("#outer2").on("click", function(event){
+                    alert("外側");
+                });
+            </script>
+
 		</div>
 		<div id="sub">
 			<div class="section">
 				<h3>練習１</h3>
                 <div style="width:100%;height:50px;background-color:red;margin:5px 0;" id="area"></div>
-赤色のエリアをクリックしたら別の色に変わるようにしてください
-<textarea id="practice4-1" rows="4" cols="84" >
-$("#area").on("", function(){
-});
-</textarea>
+                赤色のエリアをクリックしたら別の色に変わるようにしてください<br>
+                (色を変える以外の効果も試してみてください)
+                <textarea id="practice4-1" rows="4" cols="84" >
+                </textarea>
 				<div>
 					<input type="button" onClick="practice_build('practice4-1');" value="スクリプト読み込み">
 				</div>
