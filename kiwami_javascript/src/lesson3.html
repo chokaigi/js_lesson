@@ -68,6 +68,7 @@
 								html：HTMLテキスト</br>
 								script：データをJavaScriptとして評価</br>
 								json：JSONオブジェクト</br>
+								jsonp：scriptタグを使用してJSONオブジェクトを取得</br>
 								text：プレーンテキスト</br>
 								</td>
 							</tr>
@@ -135,16 +136,19 @@
 		<div id="sub">
 			<div class="section">
 				<h3>練習１</h3>
-				<a href="http://www.ekidata.jp/api/api_pref.php">駅データJP</a>のAPIで実際に東京にある路線を取得してください。</br>
+				<a href="http://zipcloud.ibsnet.co.jp">Zip Cloud</a>のAPIで郵便番号(1510053)を設定し住所(address1〜address3)の値を表示して下さい</br>
 				条件：</br>
-				url : http://www.ekidata.jp/api/p/13.xml</br>
-				type: 'GET'</br>
-				dataType: 'text'</br>
+				url : http://zipcloud.ibsnet.co.jp/api/search</br>
+				type: 'POST'</br>
+				data: 'zipcode'</br>
+				dataType: 'jsonp'</br>
 				実行結果id : practice1_response</br>
 				<textarea id="practice1" rows="18" cols="84" ></textarea>
 				<br>
 				<div>
 					<input type="button" onClick="response_build('practice1');" value="スクリプト実行">
+					<input type="button" onClick="answer_build_1('practice1_response');" value="回答結果を実行">
+					<input type="button" onClick="answer_reset_1('practice1_response');" value="実行結果をリセット">
 				</div>
 				<div id="practice1_response" class="response">
 					実行結果を表示
@@ -152,7 +156,7 @@
 			</div>
 			<div class="section">
 				<h3>練習２</h3>
-				東京にある路線をスクリプトで取得してプルダウン表示して下さい</br>
+				<a href="http://www.ekidata.jp/api/api_pref.php">駅データJP</a>のAPIで東京にある路線をスクリプトで取得してプルダウン表示して下さい</br>
 				条件：</br>
 				url : http://www.ekidata.jp/api/p/13.json</br>
 				type: 'GET'</br>
@@ -163,8 +167,8 @@
 				<br>
 				<div>
 					<input type="button" onClick="response_build('practice2');" value="スクリプト実行">
-					<input type="button" onClick="answer_build('practice2_select');" value="回答結果を実行">
-					<input type="button" onClick="answer_reset('practice2_select');" value="実行結果をリセット">
+					<input type="button" onClick="answer_build_2('practice2_select');" value="回答結果を実行">
+					<input type="button" onClick="answer_reset_2('practice2_select');" value="実行結果をリセット">
 				</div>
 				<div id="practice2_response">
 					実行結果を表示：
