@@ -78,11 +78,6 @@
 								<td>サーバに送信するデータを指定</td>
 							</tr>
 							<tr>
-								<td>context</td>
-								<td>Object</td>
-								<td>コールバック関数の context(this) を指定</td>
-							</tr>
-							<tr>
 								<td>success</td>
 								<td>Function</td>
 								<td>通信が成功したときに実行するコールバック関数を指定</td>
@@ -132,6 +127,39 @@
 				</div>
 				</br>
 			</div>
+			<p>
+				<h2>クロスドメイン制約</h2>
+				ブラウザのセキュリティの問題上、実行するHTMLファイルが置かれているドメインの<br />
+				サーバとしか通信できないという制約。<br />
+				業務で実装したWEBサービス内であれば同じドメインなのでこの問題は起きませんが外部の<br />
+				APIサービスを使用する場合にこの制約に引っかかります。<br />
+				<br />
+				<h6>クロスドメイン制約を回避する代表的な方法</h6>
+				<div id="ex2">
+					<table class="table" id="table_2">
+						<thead>
+							<tr>
+								<th>方法</th>
+								<th>説明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Access-Control-Allow-Originを設定</td>
+								<td>アクセス先のサーバーサイドでの設定で許可する</td>
+							</tr>
+							<tr>
+								<td>プログラムを経由</td>
+								<td>同一のドメインへAjax通信を行いリダイレクト等を行う</td>
+							</tr>
+							<tr>
+								<td>JSONP形式で送信</td>
+								<td>htmlがjsファイルとして外部ファイルを読み込めることを利用してJavaScriptで受け取って、処理する</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</p>
 		</div>
 		<div id="sub">
 			<div class="section">
