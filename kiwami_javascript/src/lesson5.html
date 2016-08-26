@@ -29,16 +29,77 @@
 		<div id="menu"></div>
 		<div id="main">
 			<h3 id="title"></h3>
-			<p>
-				説明を記述<br/>
-			</p>
+            <h2>関数の定義</h2>
+
+<h4>functionで関数を宣言する</h4>
+<pre>
+    function hoge(arg) {
+        return arg * arg;
+    }
+</pre>
+<h5>関数の呼び出し</h5>
+()を付けることによって関数を実行する
+<pre>
+    hoge(10);
+</pre>
+
+<h4>無名関数</h4>
+名前を付けない関数
+<li>命名する必要性のない関数をシンプルに記述出来る</li>
+<li>関数の引数などに渡せる</li>
+<pre>
+    var hoge = function(arg) {
+        return arg * arg;
+    };
+    hoge(10);
+
+    var foo = function(func, arg) {
+        return func(arg) * arg;
+    };
+    foo(hoge, 10);
+</pre>
+
+<h5>即時関数</h5>
+<li>関数を定義し即座に実行出来る</li>
+<li>グローバルスコープを汚染することなくコードを記述出来る</li>
+<pre>
+    (function(arg) {
+        return arg * arg;
+    })(10);
+</pre>
+
+
+<h4>クロージャー</h4>
+※前提
+<li>関数の中に関数を定義出来る</li>
+<li>関数を返す関数</li>
+<pre>
+    function outer() {
+        var val = 0;
+
+        function inner() {
+            val++;
+            return val;
+        }
+        return inner;
+    }
+    var foo = outer();
+    foo();
+</pre>
+foo()を連続して実行してみてください
+<li>プライベート変数を擬似的に定義出来る(状態を保持)</li>
+
 		</div>
 		<div id="sub">
 			<div class="section">
-				<h3>練習１</h3>
-			</div>
-			<div class="section">
-				<h3>練習２</h3>
+				<h3>練習</h3>
+                <textarea id="practice5" rows="30" cols="84" ></textarea>
+				<div>
+					<input type="button" onClick="practice_build('practice5');" value="スクリプト実行">
+				</div>
+                <div id="practice5_result" size="120px">
+                    実行結果を表示
+                </div>
 			</div>
 		</div>  
 		<div id="pageTop">
