@@ -144,17 +144,33 @@ foo()を連続して実行してみてください
     }
 </pre>
 
-<h5>Circleクラス</h5>
+<h4>デザインパターンの一例</h4>
 <pre>
-    function Circle(radius) {
-        this.r = radius;
+(function (root, factory) {
+
+    root.circle = factory(root.jQuery);
+
+}(this, function ($) {
+
+    function Circle() {
+        this.r = 0;
     }
 
     Circle.PI = 3.14159;
 
-    Circle.prototype.area() {
+    Circle.prototype.setRadius = function(r) {
+        this.r = r;
+    }
+
+    Circle.prototype.area = function() {
         return Circle.PI * this.r * this.r;
     }
+
+    return new Circle();
+}));
+
+circle.setRadius(10);
+circle.area();
 </pre>
 
 		</div>

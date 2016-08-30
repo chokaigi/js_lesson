@@ -54,7 +54,11 @@ function createMenu(elmentId, file, ary) {
 			act = "active";
 			$("#title").text(obj.menu);
 		}
-		$("#" + elmentId + " ul").append('<li><a href="' + obj.file + '" class="' + act + '"><font>' + obj.menu +'</font></a></li>');
+        var m = obj.menu;
+        if (m.length > 12) {
+            m = m.substr(0, 12) + '...';
+        }
+		$("#" + elmentId + " ul").append('<li><a href="' + obj.file + '" class="' + act + '"><font>' + m +'</font></a></li>');
 		act = "";
 	}
 }

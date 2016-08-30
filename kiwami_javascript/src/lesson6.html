@@ -29,18 +29,67 @@
 		<div id="menu"></div>
 		<div id="main">
 			<h3 id="title"></h3>
-			<p>
-				説明を記述<br/>
-			</p>
+            <p>HTMLドキュメントに対応するのがDocumentオブジェクト</p>
+            <p>ドキュメントを表示するウィンドウに対応するのがWindowオブジェクト</p>
+
+<h4>Windowオブジェクト</h4>
+グローバルオブジェクト<br>
+全てのグローバル変数はウィンドウのプロパティとして定義される
+<pre>
+    var answer = 42;
+    window.answer = 42;
+</pre>
+windowは省略出来る
+<pre>
+    window.alert();
+    alert();
+</pre>
+
+<h4>Documentオブジェクト</h4>
+Windowオブジェクトのdocumentプロパティ<br>
+HTMLドキュメントの制御
+
+            <table class="table" style="margin-bottom:5px;">
+            <thead>
+                <tr>
+                    <th>プロパティ</th>
+                    <th>説明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>body</th>
+                    <td>現在のdocumentのbody要素</td>
+                </tr>
+                <tr>
+                    <th>bgColor</th>
+                    <td>現在のdocumentの背景色</td>
+                </tr>
+                <tr>
+                    <th>URL</th>
+                    <td>現在のdocumentのURL</td>
+                </tr>
+                <tr>
+                    <th>title</th>
+                    <td>現在のdocumentのタイトル</td>
+                </tr>
+                <tr>
+                    <th>createElement()</th>
+                    <td>指定したタグ名で新しい要素を生成</td>
+                </tr>
+                <tr>
+                    <th>getElementById()</th>
+                    <td>特定のidを持つエレメントへのオブジェクト参照を返す</td>
+                </tr>
+                <tr>
+                    <th>write()</th>
+                    <td>ドキュメントにテキストを書き込む</td>
+                </tr>
+            </tbody>
+            </table>
+
 		</div>
-		<div id="sub">
-			<div class="section">
-				<h3>練習１</h3>
-			</div>
-			<div class="section">
-				<h3>練習２</h3>
-			</div>
-		</div>  
+
 		<div id="pageTop">
 			<a href="#">ページのトップへ戻る</a>
 		</div>
