@@ -44,7 +44,8 @@
 </pre>
 
 <h4>無名関数</h4>
-名前を付けない関数
+名前を付けない関数<br>
+関数リテラルと呼ばれる式で記述
 <li>命名する必要性のない関数をシンプルに記述出来る</li>
 <li>関数の引数などに渡せる</li>
 <pre>
@@ -68,11 +69,10 @@
     })(10);
 </pre>
 
-
-<h4>クロージャー</h4>
-※前提
+<h4>クロージャ</h4>
+コードとスコープが対になったものをクロージャと呼ぶ
 <li>関数の中に関数を定義出来る</li>
-<li>関数を返す関数</li>
+<li>関数を返す関数を作れる</li>
 <pre>
     function outer() {
         var val = 0;
@@ -88,8 +88,77 @@
 </pre>
 foo()を連続して実行してみてください
 <li>プライベート変数を擬似的に定義出来る(状態を保持)</li>
+※グローバルスコープのfooがinner()への参照を保持している
+
+<h4>クラス</h4>
+厳密にクラスというものは存在しない
+
+<h5>コンストラクタ</h5>
+<pre>
+    var d = new Date();
+
+    function Rectangle(w, h) {
+        this.width  = w;
+        this.height = h;
+    }
+
+    var rect = new Rectangle(2, 4);
+</pre>
+
+<h5>プロトタイプ</h5>
+面積を計算するメソッドを追加してみる
+<pre>
+    function Rectangle(w, h) {
+        this.width  = w;
+        this.height = h;
+        this.area = function() {
+            return this.width * this.height;
+        }
+    }
+
+    var rect = new Rectangle(2, 4);
+    var a = rect.area();
+</pre>
+オブジェクトを生成する度にareaプロパティが再定義されてしまう<br>
+全てのインスタンスで共有するプロパティについては、プロトタイプオブジェクトに追加する
+<pre>
+    function Rectangle(w, h) {
+        this.width  = w;
+        this.height = h;
+    }
+
+    Rectangle.prototype.area = function() {
+        return this.width * this.height;
+    }
+</pre>
+全ての関数は定義時にprototypeプロパティが生成される<br>
+オブジェクトはプロトタイプからプロパティを継承する
+
+<h5>プライベートメンバ</h5>
+クロージャを使って実現出来る<br>
+各メソッドはオブジェクトのインスタンスに保存する、プロトタイプオブジェクトからの継承は不可
+<pre>
+    function Rectangle(w, h) {
+        this.getWidth  = function() {return w;}
+        this.getHeight = function() {return h;}
+    }
+</pre>
+
+<h5>Circleクラス</h5>
+<pre>
+    function Circle(radius) {
+        this.r = radius;
+    }
+
+    Circle.PI = 3.14159;
+
+    Circle.prototype.area() {
+        return Circle.PI * this.r * this.r;
+    }
+</pre>
 
 		</div>
+
 		<div id="sub">
 			<div class="section">
 				<h3>練習</h3>
@@ -102,6 +171,8 @@ foo()を連続して実行してみてください
                 </div>
 			</div>
 		</div>  
+
+
 		<div id="pageTop">
 			<a href="#">ページのトップへ戻る</a>
 		</div>
