@@ -10,7 +10,7 @@ $(function() {
 		{ file: "lesson3.html", menu: "第３章：業務で大活躍のAjaxアクセス" },
 	]
 	createSection("section1", "第１回目", ary1);
-	$("#section1_sub").append('第１回目勉強会アンケート');
+	$("#section1_sub").append('<a href="https://docs.google.com/forms/d/e/1FAIpQLScVVQldD0tirtffUN9Pxm4HXRXcXMN1gLdx2nWBG_48MvTVKg/viewform">第１回目勉強会アンケート</a>');
 	
 	
 	var ary2 = [
@@ -19,7 +19,7 @@ $(function() {
 		{ file: "lesson6.html", menu: "第６章：WindowオブジェクトとDocumentオブジェクト" },
 	]
 	createSection("section2", "第２回目", ary2);
-	$("#section2_sub").append('第２回目勉強会アンケート');
+	$("#section2_sub").append('<a href="https://docs.google.com/forms/d/e/1FAIpQLScVVQldD0tirtffUN9Pxm4HXRXcXMN1gLdx2nWBG_48MvTVKg/viewform">第２回目勉強会アンケート</a>');
 	var ary3 = [
 		{ file: "", menu: "勉強会全体を通しての質問時間" },
 	]
