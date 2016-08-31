@@ -32,85 +32,125 @@
             <h2>関数の定義</h2>
 
 <h4>functionで関数を宣言する</h4>
+関数を定義するには<b>function文</b>を使います。
 <pre>
     function hoge(arg) {
         return arg * arg;
     }
 </pre>
 <h5>関数の呼び出し</h5>
-()を付けることによって関数を実行する
+<span style="color:red;">()を付けることによって関数を実行することが出来ます。</span><br>
+※()を付けるか付けないかはとても重要になってきますので、よく覚えておいてください。
 <pre>
     hoge(10);
 </pre>
+<p>練習エリアで関数を実行してみましょう。</p>
 
 <h4>無名関数</h4>
-名前を付けない関数<br>
-関数リテラルと呼ばれる式で記述
-<li>命名する必要性のない関数をシンプルに記述出来る</li>
-<li>関数の引数などに渡せる</li>
+<p>名前を付けない関数を<b>無名関数</b>と呼びます。名前を付けずに、<b>関数を変数に代入</b>することが出来ます。<br>
+この書き方は関数リテラルと呼ばれる<b>式</b>となります。<br>
+<span style="color:blue;">また、Javascriptの関数は特殊なオブジェクトで、データとしてどこにでも記述出来ます。</span></p>
+
+<li>一度しか使わない命名する必要性のない関数をシンプルに記述出来る</li>
+<li>変数に代入出来るので、関数の引数などに渡せる</li>
 <pre>
+    // 変数hogeに関数を代入
     var hoge = function(arg) {
         return arg * arg;
     };
     hoge(10);
-
+</pre>
+<hr>
+<pre>
+    // 変数fooに関数を代入
     var foo = function(func, arg) {
+        // 引数で受け取った関数funcを実行
         return func(arg) * arg;
     };
+    // 関数hogeを引数に渡す
     foo(hoge, 10);
 </pre>
 
 <h5>即時関数</h5>
-<li>関数を定義し即座に実行出来る</li>
-<li>グローバルスコープを汚染することなくコードを記述出来る</li>
+<p>関数を定義し即座に実行する関数を即時関数と言います。</p>
+<li>関数の中にコードを閉じ込めるので、グローバルスコープを汚染することなくコードを記述出来る</li>
+<li>一度しか処理されない初期化処理などに有効</li>
 <pre>
+    // functionを()で囲む
     (function(arg) {
+
         return arg * arg;
+
+    // ()を後ろに付けて即実行
     })(10);
 </pre>
+<p>Javascriptのスコープはグローバルスコープと関数スコープしかありません。<br>
+グローバルを汚染しないことはとても重要です。
+</p>
 
 <h4>クロージャ</h4>
-コードとスコープが対になったものをクロージャと呼ぶ
+<p>コードとスコープが対になったものを<b>クロージャ</b>と呼びます。</p>
+
+前提として関数は次の性質を持っています。
 <li>関数の中に関数を定義出来る</li>
 <li>関数を返す関数を作れる</li>
 <pre>
+    // 外側の関数
     function outer() {
+        // valの初期化
         var val = 0;
 
+        // 内側の関数
         function inner() {
             val++;
             return val;
         }
+        // 関数を返す
         return inner;
     }
+
+    // fooにはinner()関数が代入される
     var foo = outer();
+    // inner()を実行
     foo();
 </pre>
-foo()を連続して実行してみてください
-<li>プライベート変数を擬似的に定義出来る(状態を保持)</li>
-※グローバルスコープのfooがinner()への参照を保持している
+<p>foo()を実行してみてください。<br>またfoo()を連続で実行するとどうなるか確認してください。</p>
+<li>状態を保持したプライベート変数を擬似的に定義出来る</li>
+※グローバルスコープのfooがinner()への参照を保持していると考えられます。<br>
+(ガーベージコレクションされない)
 
 <h4>クラス</h4>
-厳密にクラスというものは存在しない
+<p>厳密にクラスというものは存在しません。</p>
 
 <h5>コンストラクタ</h5>
+<p>new演算子を使ってコンストラクタを実装できます。</p>
 <pre>
+    // Dateクラスのインスタンスを生成
     var d = new Date();
-
+    d.getFullYear();
+</pre>
+<hr>
+<p>コンストラクタは関数の中に記述します。<br>
+this.***はメンバ変数のようなものです。</p>
+<pre>
     function Rectangle(w, h) {
+        // thisはRectangle関数自身を指す
         this.width  = w;
         this.height = h;
     }
 
+    // インスタンスを生成
     var rect = new Rectangle(2, 4);
+    rect.width;
 </pre>
 
 <h5>プロトタイプ</h5>
-面積を計算するメソッドを追加してみる
+面積を計算するメソッドを追加してみましょう。
 <pre>
     function Rectangle(w, h) {
         this.width  = w;
         this.height = h;
+        // area()というメソッドを追加
         this.area = function() {
             return this.width * this.height;
         }
@@ -119,8 +159,9 @@ foo()を連続して実行してみてください
     var rect = new Rectangle(2, 4);
     var a = rect.area();
 </pre>
-オブジェクトを生成する度にareaプロパティが再定義されてしまう<br>
-全てのインスタンスで共有するプロパティについては、プロトタイプオブジェクトに追加する
+<p>area()メソッドを追加することが出来ましたが、問題があります。<br>
+<span style="color:blue;">new演算子でオブジェクトを生成する度に、area()メソッドが再定義されてしまいます。<br>(メモリの消費)</span></p>
+
 <pre>
     function Rectangle(w, h) {
         this.width  = w;
@@ -131,17 +172,23 @@ foo()を連続して実行してみてください
         return this.width * this.height;
     }
 </pre>
-全ての関数は定義時にprototypeプロパティが生成される<br>
-オブジェクトはプロトタイプからプロパティを継承する
+<p>全てのインスタンスで共有するプロパティについては、プロトタイプオブジェクトに追加しましょう。<br>
+プロトタイプオブジェクトは親クラスのようなものです。
+</p>
 
 <h5>プライベートメンバ</h5>
-クロージャを使って実現出来る<br>
-各メソッドはオブジェクトのインスタンスに保存する、プロトタイプオブジェクトからの継承は不可
+<p>Javascriptにはprivateといったアクセス修飾子がありません。<br>
+擬似的にプライベート変数を実装するには以下のようにします。
+</p>
 <pre>
     function Rectangle(w, h) {
+        // 変数w,hはゲッターメソッドを介さないとアクセス出来ません
         this.getWidth  = function() {return w;}
         this.getHeight = function() {return h;}
     }
+
+    var rect = new Rectangle(5, 10);
+    rect.getWidth();
 </pre>
 
 <h4>デザインパターンの一例</h4>
