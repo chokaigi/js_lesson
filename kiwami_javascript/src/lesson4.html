@@ -29,6 +29,7 @@
 		<div id="menu"></div>
 		<div id="main">
 			<h3 id="title"></h3>
+            イベントハンドラとは、予め定められた特定のイベントが発生した時に実行される処理のことです。
             <h2>主なイベントタイプ</h2>
             <table class="table" style="margin-bottom:5px;">
             <thead>
@@ -43,7 +44,7 @@
                     <td>要素がクリックされたとき</td>
                 </tr>
                 <tr>
-                    <th>keydowm</th>
+                    <th>keydown</th>
                     <td>要素にフォーカスした状態で、キーボードのキーが押されたとき</td>
                 </tr>
                 <tr>
@@ -69,17 +70,28 @@
             </tbody>
             </table>
 
-            <h4>on構文</h4>
-			<div style="margin-bottom:15px;">
-            <script>
-                var fn = function() {
-                    $(セレクタ).on(イベントタイプ, function(){
-                        // イベントが発生した時に実行する処理
-                    });
-                }
-                document.write(html_replace(function_replace(fn)));
-            </script>
-            </div>
+<h4>on構文</h4>
+jQueryではon()を使って簡単にイベントハンドラの処理を記述出来ます。
+<div style="margin-bottom:15px;">
+<pre>
+    $(セレクタ).on(イベントタイプ, function(){
+        実行したい処理
+    });
+</pre>
+<hr>
+<pre>
+    $("#button").on("click", function(){
+        alert("OK");
+    });
+</pre>
+
+ボタンをクリックするとアラートが表示されます→<input type="button" id="button" value="ボタン"/>
+<script>
+    $("#button").on("click", function(){
+        alert("OK");
+    });
+</script>
+</div>
 
             <h4>よく使うjQuery関数</h4>
             <table class="table" style="margin-bottom:5px;">
@@ -87,37 +99,54 @@
                 <tr>
                     <th>関数名</th>
                     <th>機能</th>
+                    <th>例</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>css({name:value})</th>
                     <td>スタイルを変更する</td>
+                    <td>css({backgroundColor:"green"})</td>
                 </tr>
                 <tr>
                     <th>show(speed, [callback])</th>
                     <td>要素を表示する</td>
+                    <td>show(100)</td>
                 </tr>
                 <tr>
                     <th>hide(speed, [callback])</th>
                     <td>要素を非表示にする</td>
+                    <td>hide(100)</td>
                 <tr>
                     <th>toggle()</th>
                     <td>要素の表示/非表示を切り替える</td>
+                    <td>toggle()</td>
                 </tr>
                 <tr>
                     <th>fadeIn(speed, [callback])</th>
                     <td>要素をフェードインする</td>
+                    <td>fadeIn(50)</td>
                 </tr>
                 <tr>
                     <th>fadeOut(speed, [callback])</th>
                     <td>要素をフェードアウトする</td>
+                    <td>fadeOut(50)</td>
                 </tr>
             </tbody>
             </table>
 
-            <h2>イベントバブリング</h2>
-            イベントが子要素から親要素に伝播すること
+<h2>イベントバブリング</h2>
+イベントが子要素から親要素に伝播することです。<br>
+下の例では、内側(inner1)と外側(outer1)にクリックイベントが設定され、アラートを表示するようになっています。
+<pre>
+    $("#inner1").on("click", function(event){
+        alert("内側");
+    });
+    $("#outer1").on("click", function(event){
+        alert("外側");
+    });
+</pre>
+内側をクリックすると外側にクリックイベントが伝播していることが分かると思います。
             <div style="margin:10px 0px;">
             <div id="outer1" style="height:150px;width:150px;background-color:#ff4500;">
                 <div id="inner1" style="height:100px;width:100px;background-color:#d7ad10;margin:25px;position:absolute;">
@@ -132,19 +161,23 @@
                     alert("外側");
                 });
             </script>
-            <h4>stopPropagation()でイベントの伝播を止める</h4>
-            <script>
-                var fn = function() {
-                    $("#inner2").on("click", function(event){
-                        event.stopPropagation();
-                        alert("内側");
-                    });
-                    $("#outer2").on("click", function(event){
-                        alert("外側");
-                    });
-                }
-                document.write(html_replace(function_replace(fn)));
-            </script>
+
+<h4>stopPropagation()でイベントの伝播を止める</h4>
+イベントの伝播が不便な場合、stopPropagation()関数を使ってイベントの伝播を止めることが出来ます。
+<pre>
+    // 第二引数のfunctionはイベントオブジェクトを引数に取ります
+    $("#inner2").on("click", function(event){
+        // ここでイベントの伝播をストップします
+        event.stopPropagation();
+        alert("内側");
+    });
+
+    $("#outer2").on("click", function(event){
+        alert("外側");
+    });
+</pre>
+内側をクリックしても外側のクリックイベントが発生しないことが分かると思います。
+
             <div id="outer2" style="height:150px;width:150px;background-color:#ff4500;">
                 <div id="inner2" style="height:100px;width:100px;background-color:#d7ad10;margin:25px;position:absolute;">
                 </div>
@@ -160,16 +193,22 @@
             </script>
 
 		</div>
+
 		<div id="sub">
 			<div class="section">
 				<h3>練習１</h3>
                 <div style="width:100%;height:50px;background-color:red;margin:5px 0;" id="area"></div>
-                赤色のエリアをクリックしたら別の色に変わるようにしてください<br>
-                (色を変える以外の効果も試してみてください)
-                <textarea id="practice4" rows="4" cols="84" >
-                </textarea>
+                <input type="button" id="b" value="ボタン"><br>
+                ボタン(id="b")をクリックしたら赤色のエリア(id="area")が別の色に変わるようにしてください。<br>
+                色を変える以外の効果(fadeOut(), toggle()など)も試してみてください。
+<textarea id="practice4" rows="4" cols="84" >
+$("").on("", function(){
+
+});
+</textarea>
 				<div>
-					<input type="button" onClick="practice_build('practice4');" value="スクリプト読み込み">
+                    <input type="button" onClick="practice_build('practice4');" value="スクリプト読み込み"><br>
+                    スクリプトを読み込んでからボタンをクリックしましょう。
 				</div>
 			</div>
 		</div>  
