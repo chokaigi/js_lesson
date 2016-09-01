@@ -70,6 +70,17 @@
     // 関数hogeを引数に渡す
     foo(hoge, 10);
 </pre>
+<hr>
+オブジェクトの要素に記述することも出来ます。
+<pre>
+    var o = {
+        hoge : function(arg) {
+            return arg * arg;
+        }
+    }
+
+    o.hoge(5);
+</pre>
 
 <h5>即時関数</h5>
 <p>関数を定義し即座に実行する関数を<b>即時関数</b>と言います。</p>
@@ -85,7 +96,7 @@
     })(10);
 </pre>
 <p>Javascriptのスコープは<b>グローバルスコープ</b>と<b>関数スコープ</b>しかありません。<br>
-<span style="color:red;">グローバルを汚染しないことはとても重要です。</span>
+<span style="color:red;">グローバルスコープを汚染しないことはとても重要です。</span>
 </p>
 
 <h4>クロージャ</h4>
@@ -144,6 +155,7 @@ this.***はメンバ変数のようなものです。</p>
     // メンバ変数にアクセス出来る
     rect.width;
 </pre>
+※thisはインスタンスを生成した時点でRectangleオブジェクトを指すようになります
 
 <h5>プロトタイプ</h5>
 面積を計算するメソッドを追加してみましょう。
@@ -203,14 +215,17 @@ this.***はメンバ変数のようなものです。</p>
 <pre>
 (function (root, factory) {
 
+    // rootはWindowオブジェクト(グローバルスコープからthisを受けっとているため)
     root.circle = factory(root.jQuery);
 
 }(this, function ($) {
 
+    // Circleクラスを定義
     function Circle() {
         this.r = 0;
     }
 
+    // 定数的なものは大文字で
     Circle.PI = 3.14159;
 
     Circle.prototype.setRadius = function(r) {
@@ -221,9 +236,12 @@ this.***はメンバ変数のようなものです。</p>
         return Circle.PI * this.r * this.r;
     }
 
+    // インスタンスを返す
     return new Circle();
 }));
 
+// circleプロパティにすでにインスタンスが代入されているので
+// メソッドをすぐに使える
 circle.setRadius(10);
 circle.area();
 </pre>
