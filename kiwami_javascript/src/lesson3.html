@@ -108,7 +108,7 @@
 							$("#example1_response").text(result).css('background-color', 'cyan');
 						},
 						error: function(result){
-							$("#example1_response").text(result).css('background-color', 'red');
+							console.log(result);
 						}
 					});
 				}
@@ -127,6 +127,10 @@
 				</div>
 				</br>
 			</div>
+			<p>
+				<h2>ブラウザーのエラー時の確認</h2>
+				consoleオブジェクトのconsole.log(変数)で対象の中身を確認できます。<br />
+			</p>
 			<p>
 				<h2>クロスドメイン制約</h2>
 				ブラウザのセキュリティの問題上、実行するHTMLファイルが置かれているドメインの<br />

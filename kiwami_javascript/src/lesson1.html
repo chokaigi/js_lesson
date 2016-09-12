@@ -67,6 +67,7 @@
 				</table>
 			</div>			
 			<h2>要素で家族階層を参照する方法</h2>
+			<h5>※elementとはHTML や XML 文書における、要素（タグ）に相当し基本的な機能としNodeというインターフェースで処理を行います</h5>
 			<div>
 				<table class="table">
 					<thead>
@@ -76,10 +77,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>子要素リストを参照</td>
-							<td>element.childNodes</td>
-						</tr>
 						<tr>
 							<td>親要素を参照</td>
 							<td>element.parentNode</td>
@@ -100,8 +97,19 @@
 							<td>弟妹要素を参照</td>
 							<td>element.nextSibling</td>
 						</tr>
+						<tr>
+							<td>子要素リストを参照</td>
+							<td>element.childNodes</td>
+						</tr>
 					</tbody>
 				</table>
+				<br/>
+				<img border="0" src="images/dom_2.png" width="450" height="350" alt="dom_2">
+				<br/>
+				<br/>
+				<p>注意点：兄姉要素や弟妹要素を取得する時は改行によってホワイトスペースノードが作られるためブラウザによって挙動が変わるので注意してください。</p>
+			<br />
+			<br />
 			</div>			
 		</div>
 		<div id="sub">
@@ -142,12 +150,12 @@
 							<tr id="tr_2">
 								<td id="td_2A">ゾウ</td>
 								<td id="td_2B">ぶどう</td>
-								<td id="td_1C">にんじん</td>
+								<td id="td_2C">にんじん</td>
 							</tr>
 							<tr id="tr_3">
 								<td id="td_3A">ゴリラ</td>
 								<td id="td_3B">みかん</td>
-								<td id="td_1C">レタス</td>
+								<td id="td_3C">レタス</td>
 							</tr>
 						</tbody>
 					</table>
@@ -157,7 +165,8 @@
 				</script>
 				<div id="ex_r1">
 					<h5>実際に取得してみよう</h5>
-					<textarea id="example1" rows="1" cols="84" >document.getElementById("td_0A").innerText;</textarea>
+					<p>idはtd_3Aのテキスト</p>
+					<textarea id="example1" rows="1" cols="84" >document.getElementById("td_3A").innerText;</textarea>
 					<br>
 					<div>
 						<input type="button" onClick="practice_build('example1');" value="スクリプト実行">
@@ -167,7 +176,30 @@
 					</div>
 					</br>
 				</div>				
-				
+				<div id="ex_r2">
+					<p>idはtd_3Aの親のタグ名</p>
+					<textarea id="example2" rows="1" cols="84" >document.getElementById("td_3A").parentNode.nodeName;</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example2');" value="スクリプト実行">
+					</div>
+					<div id="example2_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>				
+				<div id="ex_r3">
+					<p>idはtd_3Aの弟妹のテキスト</p>
+					<textarea id="example3" rows="1" cols="84" >document.getElementById("td_3A").nextSibling.nextSibling.innerText</textarea>
+					<br>
+					<div>
+						<input type="button" onClick="practice_build('example3');" value="スクリプト実行">
+					</div>
+					<div id="example3_result" size="120px">
+						実行結果を表示
+					</div>
+					</br>
+				</div>				
 			</div>
 		</div>  
 		<div id="pageTop">
