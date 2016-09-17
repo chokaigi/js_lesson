@@ -19,7 +19,7 @@ $(function() {
 		{ file: "lesson6.html", menu: "第６章：WindowオブジェクトとDocumentオブジェクト" },
 	]
 	createSection("section2", "第２回目", ary2);
-	$("#section2_sub").append('<a href="https://docs.google.com/forms/d/e/1FAIpQLScVVQldD0tirtffUN9Pxm4HXRXcXMN1gLdx2nWBG_48MvTVKg/viewform">第２回目勉強会アンケート</a>');
+	$("#section2_sub").append('<a href="https://docs.google.com/forms/d/e/1FAIpQLSdEU-R-1GL8-KvPnjkUp92Ral-DyvrflQk-BuL8vdnTPNRKvg/viewform">第２回目勉強会アンケート</a>');
 	var ary3 = [
 		{ file: "", menu: "勉強会全体を通しての質問時間" },
 	]
